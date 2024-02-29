@@ -1,3 +1,4 @@
+/*
 package com.comrade.service;
 
 import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
@@ -29,3 +30,4 @@ public class PdfOperationService {
         vectorStore.accept(docs);
     }
 }
+*/

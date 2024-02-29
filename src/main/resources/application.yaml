@@ -2,9 +2,14 @@ server:
   port: 8084
 spring:
   ai:
-    openai:
-      baseUrl: ${OPEN_API_URL}
-      apiKey: ${OPEN_API_KEY}
+    postgresml:
+      embedding:
+        options:
+          transformer: distilbert-base-uncased
+          vectorType: PG_ARRAY
+          metadataMode: EMBED
+          kwargs:
+            device: cpu
   datasource:
     url: jdbc:postgresql://localhost/vector_store
     username: postgres
