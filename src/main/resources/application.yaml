@@ -1,0 +1,14 @@
+server:
+  port: 8084
+spring:
+  ai:
+    openai:
+      baseUrl: ${OPEN_API_URL}
+      apiKey: ${OPEN_API_KEY}
+  datasource:
+    url: jdbc:postgresql://localhost/vector_store
+    username: postgres
+    password: postgres
+
+pdf:
+  path: classpath:medicaid-wa-faqs.pdf
