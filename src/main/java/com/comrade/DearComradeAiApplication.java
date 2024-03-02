@@ -17,7 +17,7 @@ public class DearComradeAiApplication {
 	@Bean
 	public ApplicationRunner applicationRunner(){
 		return args -> {
-			//pdfOperationService.pdfOperationInit();
+			pdfOperationService.pdfOperationInit();
         };
 	}
 }

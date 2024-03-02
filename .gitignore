@@ -1,4 +1,7 @@
 HELP.md
+#dear-comrade-ai-ui/build/
+#dear-comrade-ai-ui/node_modules/
+#dear-comrade-ai-ui/package-lock.json
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -31,3 +34,27 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# dependencies
+/dear-comrade-ai-ui/node_modules
+/dear-comrade-ai-ui/.pnp
+/dear-comrade-ai-ui/.pnp.js
+
+# testing
+/dear-comrade-ai-ui/coverage
+
+# production
+/dear-comrade-ai-ui/build
+/dear-comrade-ai-ui/package-lock.json
+
+# misc
+/dear-comrade-ai-ui/.DS_Store
+/dear-comrade-ai-ui/.env.local
+/dear-comrade-ai-ui/.env.development.local
+/dear-comrade-ai-ui/.env.test.local
+/dear-comrade-ai-ui/.env.production.local
+
+/dear-telangana-web/npm-debug.log*
+/dear-telangana-web/yarn-debug.log*
+/dear-telangana-web/yarn-error.log*
