@@ -2,13 +2,22 @@ server:
   port: 8084
 spring:
   ai:
-    openai:
-      baseUrl: ${OPEN_API_URL}
-      apiKey: ${OPEN_API_KEY}
+    ollama:
+      baseUrl: http://localhost:11434/
+      chat:
+        model: 'gemma:2b'
+      embedding:
+        options:
+          model: 'gemma:2b'
+        model: 'gemma:2b'
   datasource:
     url: jdbc:postgresql://localhost/vector_store
     username: postgres
     password: postgres
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 
 pdf:
   path: classpath:medicaid-wa-faqs.pdf
