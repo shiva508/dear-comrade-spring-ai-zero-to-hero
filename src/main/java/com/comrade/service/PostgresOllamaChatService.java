@@ -39,8 +39,7 @@ public class PostgresOllamaChatService {
     public String askQuestion(QuestionModel questionModel){
         var roiDocuments = vectorStore.similaritySearch(questionModel.getQuestion());
         var documents =roiDocuments.stream().map(Document::getContent).collect(Collectors.joining(System.lineSeparator()));
-        var systemMessage = new SystemPromptTemplate(this.template)
-                .createMessage(Map.of("documents", documents));
+        var systemMessage = new SystemPromptTemplate(this.template).createMessage(Map.of("documents", documents));
         var userMessage = new UserMessage(questionModel.getQuestion());
         var prompt = new Prompt(List.of(systemMessage, userMessage));
         var aiResponse = aiClient.call(prompt);
