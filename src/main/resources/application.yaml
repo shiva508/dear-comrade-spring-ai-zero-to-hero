@@ -10,10 +10,6 @@ spring:
         options:
           model: 'gemma:2b'
         model: 'gemma:2b'
-  datasource:
-    url: jdbc:postgresql://localhost/vector_store
-    username: postgres
-    password: postgres
 
 springdoc:
   swagger-ui:
