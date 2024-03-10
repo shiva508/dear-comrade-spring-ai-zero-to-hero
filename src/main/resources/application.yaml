@@ -1,14 +1,13 @@
 server:
   port: 8084
-spring:
-  ai:
-    openai:
-      baseUrl: ${OPEN_API_URL}
-      apiKey: ${OPEN_API_KEY}
-  datasource:
-    url: jdbc:postgresql://localhost/vector_store
-    username: postgres
-    password: postgres
+
+neo4j:
+  uri: bolt://127.0.0.1:7687
+  username: neo4j
+  password: password1234
+  dimension: 384
+
+
 
 pdf:
   path: classpath:medicaid-wa-faqs.pdf
