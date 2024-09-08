@@ -1,6 +1,6 @@
 package com.comrade.config.pdf;
 
-import org.springframework.ai.embedding.EmbeddingClient;
+import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.reader.ExtractedTextFormatter;
 import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
 import org.springframework.ai.vectorstore.PgVectorStore;
@@ -23,8 +23,10 @@ public class PdfReadWriteConfiguration {
                 .build();
     }
 
+    /*
     @Bean
-    public VectorStore vectorStore(JdbcTemplate jdbcTemplate, EmbeddingClient embeddingClient) {
-        return new PgVectorStore(jdbcTemplate, embeddingClient);
+    public VectorStore vectorStore(JdbcTemplate jdbcTemplate, EmbeddingModel embeddingModel) {
+        return new PgVectorStore(jdbcTemplate, embeddingModel);
     }
+     */
 }

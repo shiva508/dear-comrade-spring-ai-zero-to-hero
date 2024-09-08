@@ -2,18 +2,26 @@ server:
   port: 8084
 spring:
   ai:
+    vectorstore:
+      pgvector:
+      index-type: HNSW
+      distance-type: COSINE_DISTANCE
+      dimensions: 1536
     ollama:
       baseUrl: http://localhost:11434/
       chat:
-        model: 'gemma:2b'
+        model: 'gemma2'
       embedding:
         options:
-          model: 'gemma:2b'
-        model: 'gemma:2b'
+          model: 'gemma2'
+        model: 'gemma2'
+
   datasource:
-    url: jdbc:postgresql://localhost/vector_store
+    url: jdbc:postgresql://172.22.0.2/vector_store
     username: postgres
     password: postgres
+  jpa:
+    show-sql: true
 
 springdoc:
   swagger-ui:

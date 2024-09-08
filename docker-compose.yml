@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   postgres:
+#    image: pgvector/pgvector:v0.5.0
     image: ankane/pgvector:v0.5.0
     restart: always
     environment:
@@ -19,6 +20,8 @@ services:
       interval: 2s
       timeout: 20s
       retries: 10
+    networks:
+      - DHA
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
@@ -29,3 +32,8 @@ services:
       - ./servers.json:/pgadmin4/servers.json
     ports:
       - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - DHA
+networks:
+  DHA:
+    driver: bridge

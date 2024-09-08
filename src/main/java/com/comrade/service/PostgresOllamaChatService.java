@@ -2,11 +2,11 @@ package com.comrade.service;
 
 import com.comrade.model.QuestionModel;
 import lombok.AllArgsConstructor;
-import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PostgresOllamaChatService {
 
-    private final ChatClient aiClient;
+    private final OllamaChatModel ollamaChatModel;
     private final VectorStore vectorStore;
 
     private final String template = """
@@ -42,7 +42,7 @@ public class PostgresOllamaChatService {
         var systemMessage = new SystemPromptTemplate(this.template).createMessage(Map.of("documents", documents));
         var userMessage = new UserMessage(questionModel.getQuestion());
         var prompt = new Prompt(List.of(systemMessage, userMessage));
-        var aiResponse = aiClient.call(prompt);
+        var aiResponse = ollamaChatModel.call(prompt);
         return aiResponse.getResult().getOutput().getContent();
     }
 }
