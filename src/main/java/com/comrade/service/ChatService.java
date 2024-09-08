@@ -2,8 +2,10 @@ package com.comrade.service;
 
 
 import com.comrade.model.QuestionModel;
+import reactor.core.publisher.Flux;
 
 public interface ChatService {
-    public String askQuestion(QuestionModel questionModel);
+    String askQuestion(QuestionModel questionModel);
+    Flux<String> askQuestionReactive(QuestionModel questionModel);
 
 }

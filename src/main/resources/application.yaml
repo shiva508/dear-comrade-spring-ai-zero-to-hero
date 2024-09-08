@@ -5,11 +5,11 @@ spring:
     ollama:
       baseUrl: http://localhost:11434/
       chat:
-        model: 'gemma:2b'
+        model: 'llama3.1'
       embedding:
         options:
-          model: 'gemma:2b'
-        model: 'gemma:2b'
+          model: 'llama3.1'
+        model: 'llama3.1'
 
 springdoc:
   swagger-ui:
