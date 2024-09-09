@@ -2,11 +2,14 @@ package com.comrade.service;
 
 import com.comrade.model.QuestionModel;
 import lombok.AllArgsConstructor;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.api.OllamaApi;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,7 @@ public class PostgresOllamaChatService {
 
     private final OllamaChatModel ollamaChatModel;
     private final VectorStore vectorStore;
+    private final ChatClient chatClient;
 
     private final String template = """
                         
@@ -36,6 +40,20 @@ public class PostgresOllamaChatService {
             {documents}
                         
             """;
+
+    private final String resumeTemplate = """
+                        
+            You're assisting with questions about candidate information and projects worked on.
+            information includes phone number, email, name of the candidate, Professional Summary,
+            Technical Skills,Work Experience, Education Qualification, Certifications.
+                    
+            Use the information from the RESUMES section to provide accurate answers but act as if you knew this information innately.
+            If unsure, simply state that you don't know.
+                    
+            RESUMES:
+            {resumes}
+                        
+            """;
     public String askQuestion(QuestionModel questionModel){
         var roiDocuments = vectorStore.similaritySearch(questionModel.getQuestion());
         var documents =roiDocuments.stream().map(Document::getContent).collect(Collectors.joining(System.lineSeparator()));
@@ -44,5 +62,15 @@ public class PostgresOllamaChatService {
         var prompt = new Prompt(List.of(systemMessage, userMessage));
         var aiResponse = ollamaChatModel.call(prompt);
         return aiResponse.getResult().getOutput().getContent();
+    }
+
+    public String askResumeQuestion(QuestionModel questionModel){
+        var roiDocuments = vectorStore.similaritySearch(SearchRequest.query(questionModel.getQuestion()).withTopK(1));
+        var documents = roiDocuments.stream().map(Document::getContent).collect(Collectors.joining(System.lineSeparator()));
+        var systemMessage = new SystemPromptTemplate(this.resumeTemplate).createMessage(Map.of("resumes", documents));
+        var userMessage = new UserMessage(questionModel.getQuestion());
+        var prompt = new Prompt(List.of(systemMessage, userMessage));
+        var aiResponse = chatClient.prompt(prompt);
+        return aiResponse.call().contents().getFirst();
     }
 }

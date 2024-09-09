@@ -10,4 +10,8 @@
 #### ollama run gemma:2b
 #### there are many other models at https://github.com/ollama/ollama?tab=readme-ov-file#model-library
 
+{
+"question": "what should I know about the transition to consumer direct care network washington?"
+}
+
 

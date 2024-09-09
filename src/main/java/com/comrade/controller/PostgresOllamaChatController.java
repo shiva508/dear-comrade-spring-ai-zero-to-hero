@@ -22,4 +22,9 @@ public class PostgresOllamaChatController {
         return Map.of("answer",postgresOllamaChatService.askQuestion(questionModel));
     }
 
+    @PostMapping("/askResumeQuestion")
+    public Map<String,String> askResumeQuestion(@RequestBody QuestionModel questionModel){
+        return Map.of("answer",postgresOllamaChatService.askResumeQuestion(questionModel));
+    }
+
 }

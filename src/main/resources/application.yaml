@@ -4,22 +4,30 @@ spring:
   ai:
     vectorstore:
       pgvector:
-      index-type: HNSW
-      distance-type: COSINE_DISTANCE
-      dimensions: 1536
+        index-type: none #ivfflat
+        distance-type: COSINE_DISTANCE
+        dimensions: 4096
+        initialize-schema: false
+        schema-validation: false
+        remove-existing-vector-store-table: false
     ollama:
       baseUrl: http://localhost:11434/
       chat:
-        model: 'gemma2'
+        options:
+          model: mistral
       embedding:
         options:
-          model: 'gemma2'
-        model: 'gemma2'
+          model: mistral
 
   datasource:
-    url: jdbc:postgresql://172.22.0.2/vector_store
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost/vector_store
+    username: dear
+    password: comrade
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+      auto-commit: false
+
   jpa:
     show-sql: true
 
@@ -29,3 +37,5 @@ springdoc:
 
 pdf:
   path: classpath:medicaid-wa-faqs.pdf
+resume:
+  path: classpath:shiva_java_developer.pdf
