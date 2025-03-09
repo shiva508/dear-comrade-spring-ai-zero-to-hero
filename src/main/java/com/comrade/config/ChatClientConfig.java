@@ -9,7 +9,6 @@ public class ChatClientConfig {
 
     private final ChatClient chatClient;
 
-
     public ChatClientConfig(ChatClient.Builder chatClient) {
         this.chatClient = chatClient.build();
     }
