@@ -24,8 +24,8 @@ public class DearComradeAiApplication {
 	@Bean
 	public ApplicationRunner applicationRunner(PgVectorStoreService pgVectorStoreService){
 		return args -> {
-			String status = pgVectorStoreService.loadData();
-			log.info(status);
+			//String status = pgVectorStoreService.loadData();
+			//log.info(status);
 		};
 	}
 }

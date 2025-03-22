@@ -39,7 +39,7 @@ public class ChatController {
     }
 
     @PostMapping("/vector-store-prompt-chat")
-    public String vectorStorePromptChat(ChatRequestModel chatRequestModel){
+    public String vectorStorePromptChat(@RequestBody ChatRequestModel chatRequestModel){
         return chatService.vectorStorePromptChat(chatRequestModel);
     }
 }

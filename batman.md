@@ -52,3 +52,9 @@ Becoming Batman is a challenging and ambitious goal, requiring a unique combinat
 **Conclusion**
 
 Becoming Batman requires a comprehensive approach, incorporating physical training, mental preparation, intellectual pursuits, equipment, psychological profile, challenges, and overcoming fears. Remember that this is an extraordinary journey, and you should be prepared for the immense responsibility and personal sacrifices that come with being a superhero.
+
+Get me the shipment info of awb number 237124213
+Give me the list of awb that are Delivered
+Give me the list of awb that are Delivered
+
+Give me the list of awb that are delivered to Thalla Malka Puram

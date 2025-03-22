@@ -17,14 +17,14 @@ spring:
       base-url: http://localhost:11434/
       embedding:
         enabled: true
-        model: llama3
+        model: llama3.2
         options:
-          model: llama3
+          model: llama3.2
       chat:
         enabled: true
-        model: llama3
+        model: llama3.2
         options:
-          model: llama3
+          model: llama3.2
   datasource:
     url: jdbc:postgresql://localhost:5432/vector_store
     username: postgres
