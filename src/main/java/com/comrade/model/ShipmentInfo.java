@@ -9,4 +9,5 @@ public class ShipmentInfo {
    private String ConsigneeName;
    private String ShipmentStatus;
    private String DeliveryLocation;
+   private Integer amount;
 }

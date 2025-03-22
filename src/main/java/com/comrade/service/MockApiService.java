@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -27,6 +28,7 @@ public class MockApiService {
  @PostConstruct
  public void init(){
 
+     Random randomGenerator = new Random();
      shipmentInfos.addAll(IntStream.range(1,5).mapToObj(value -> {
          ShipmentInfo shipmentInfo = new ShipmentInfo();
          shipmentInfo.setTrackingNumber(String.format("23712421%s",value));
@@ -34,6 +36,7 @@ public class MockApiService {
          shipmentInfo.setDeliveryLocation(value%2 ==0 ?"Hyderabad":"Thalla Malka Puram");
          shipmentInfo.setShipperName(value%2 ==0 ? "Books": "Pens");
          shipmentInfo.setConsigneeName(value%2 ==0 ? "Shiva Dasari": "Dasari Satish");
+         shipmentInfo.setAmount(randomGenerator.nextInt(10_000));
          return shipmentInfo;
      }).collect(Collectors.toSet()));
 

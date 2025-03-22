@@ -58,3 +58,9 @@ Give me the list of awb that are Delivered
 Give me the list of awb that are Delivered
 
 Give me the list of awb that are delivered to Thalla Malka Puram
+
+Give me the list of shipments that are delivered to Thalla Malka Puram
+Give me the list of shipments that are associated with location Thalla Malka Puram
+Give me the total amount of shipments that are associated with location Thalla Malka Puram
+Give me the total amount of shipments that are associated with location Hyderabad
+Give me the complete details of shipments that are associated with location only Hyderabad
