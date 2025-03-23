@@ -1,7 +1,7 @@
 package com.comrade.service;
 
 import com.comrade.model.ChatRequestModel;
-import com.comrade.tool.DateTimeTools;
+import com.comrade.tool.ShipperInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -21,7 +21,7 @@ public class ToolChatService {
 
     private final ChatClient chatClient;
 
-    private final DateTimeTools dateTimeTools;
+    private final ShipperInfoService shipperInfoService;
 
     public String toolChatCallDateTime(ChatRequestModel chatRequestModel){
 
@@ -31,7 +31,7 @@ public class ToolChatService {
         Prompt prompt = new  Prompt(promptTemplate.createMessage());
         return chatClient
                 .prompt(prompt)
-                .tools(dateTimeTools)
+                .tools(shipperInfoService)
                 .call()
                 .content();
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class DateTimeTools {
+public class ShipperInfoService {
 
     private final MockApiService mockApiService;
 
