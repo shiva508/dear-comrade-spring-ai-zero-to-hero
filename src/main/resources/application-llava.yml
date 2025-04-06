@@ -1,0 +1,47 @@
+server:
+  port: 8084
+  shutdown: GRACEFUL
+
+spring:
+  application:
+    name: ollama-llama3
+  ai:
+    vectorstore:
+      pgvector:
+        index-type: NONE
+        distance-type: COSINE_DISTANCE
+        dimensions: 4096
+        initialize-schema: true
+        remove-existing-vector-store-table: true
+    ollama:
+      base-url: http://localhost:11434/
+      embedding:
+        enabled: true
+        model: llava
+        options:
+          model: llava
+      chat:
+        enabled: true
+        model: llava
+        options:
+          model: llava
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vector_store
+    username: postgres
+    password: postgres
+    jpa:
+      show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+pdf:
+  path: classpath:Shiva_Java_Developer.pdf
+
+image:
+  height: 1024
+  width: 1024
+  order: 1
+  format: url #openai - url or base64 : stability ai byte[] or base64
+
