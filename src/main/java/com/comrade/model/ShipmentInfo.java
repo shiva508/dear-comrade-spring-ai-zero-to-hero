@@ -13,6 +13,6 @@ public class ShipmentInfo {
    private String DeliveryLocation;
    private String shipperCountry;
    private String recipientCountry;
-   List<ShipmentAction> shipmentActions;
+   private List<ShipmentAction> shipmentActions;
    private Integer amount;
 }

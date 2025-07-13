@@ -21,7 +21,9 @@ public class ImageController {
     }
 
     @PostMapping(value = "/analyze", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String analyze(@RequestBody ChatRequestModel chatRequestModel, @RequestParam("file")MultipartFile file){
+    public String analyze(@RequestPart("chatMessage") String chatMessage, @RequestPart("file")MultipartFile file){
+        ChatRequestModel chatRequestModel = new ChatRequestModel();
+        chatRequestModel.setChatMessage(chatMessage);
         return imageService.analyze(chatRequestModel,file);
     }
 }

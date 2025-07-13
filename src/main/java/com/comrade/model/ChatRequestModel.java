@@ -1,25 +1,12 @@
 package com.comrade.model;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class ChatRequestModel implements Serializable {
 
     private String chatMessage;
-    public ChatRequestModel() {
-    }
-
-    public ChatRequestModel(String chatMessage) {
-        this.chatMessage = chatMessage;
-    }
-
-
-
-    public String getChatMessage() {
-        return chatMessage;
-    }
-
-    public void setChatMessage(String chatMessage) {
-        this.chatMessage = chatMessage;
-    }
 }
